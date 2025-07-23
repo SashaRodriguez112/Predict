@@ -141,7 +141,8 @@
     const finalPhrases = [
       "Calculating space-time vortexes...",
       "Calibrating user tolerance levels...",
-      "Analyzing attention span..."
+      "Analyzing attention span...",
+      "Not getting the best results..."
     ];
 
     function shuffleArray(array) {
@@ -156,7 +157,7 @@
       element.style.display = 'inline-block';
       element.textContent = '';
       let i = 0;
-      const speed = 30;
+      const speed = 40;
       function type() {
         if (i < text.length) {
           element.textContent += text.charAt(i);
@@ -233,8 +234,8 @@
             resultEl.textContent = `Result: ${parseInt(input) + 1}`;
 
             confetti({
-              particleCount: 300,
-              spread: 150,
+              particleCount: 400,
+              spread: 100,
               origin: { y: 0.6 }
             });
           }, finalPhraseDelay);
