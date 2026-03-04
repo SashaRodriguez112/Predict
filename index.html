@@ -95,12 +95,14 @@
       overflow: hidden;
       border-right: 2px solid #00ffff;
       display: none;
+      color: black;
     }
 
     #result {
       margin-top: 40px;
       font-size: 1.8em;
       color: #00ff88;
+      -webkit-text-stroke: 2px black;
     }
   </style>
 </head>
@@ -118,6 +120,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
 
+<script type="module" src="style"></script>
   <script>
     const allPhrases = [
       "Stabilizing warp field harmonics...",
@@ -233,8 +236,8 @@
             resultEl.textContent = `Result: ${parseInt(input) + 1}`;
 
             confetti({
-              particleCount: 8000,
-              spread: 100000,
+              particleCount: 1000000,
+              spread: 100,
               origin: { y: 0.6 }
             });
           }, finalPhraseDelay);
@@ -243,6 +246,58 @@
 
       nextPhrase();
     }
+    var hue = 0;
+function bgLoop() {
+  hue += 1;
+
+  document.body.style.background =
+    "linear-gradient(" +
+    hue + "deg, " +
+    "hsl(" + (hue % 360) + ",100%,50%), " +
+    "hsl(" + ((hue + 120) % 360) + ",100%,50%), " +
+    "hsl(" + ((hue + 240) % 360) + ",100%,50%))";
+
+  requestAnimationFrame(bgLoop);
+}
+bgLoop();   
   </script>
+  <div id="fpsCounter">FPS: 0</div>
+
+<style>
+  /* FPS counter styling */
+  #fpsCounter {
+    position: fixed;
+    top: 10px; 
+    left: 10px;
+    background: rgba(0,0,0,0.7);
+    color: #00ff00;
+    padding: 5px 10px;
+    font-family: monospace;
+    font-size: 14px;
+    border-radius: 5px;
+    z-index: 9999;
+  }
+</style>
+
+<script>
+  // FPS counter logic
+  let lastTime = performance.now();
+  let frameCount = 0;
+  let fps = 0;
+
+  function updateFPS() {
+    const now = performance.now();
+    frameCount++;
+    if (now - lastTime >= 1000) { // every 1 second
+      fps = frameCount;
+      frameCount = 0;
+      lastTime = now;
+      document.getElementById('fpsCounter').textContent = 'FPS: ' + fps;
+    }
+    requestAnimationFrame(updateFPS);
+  }
+
+  requestAnimationFrame(updateFPS);
+</script>
 </body>
 </html>
