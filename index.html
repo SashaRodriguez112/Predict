@@ -104,14 +104,70 @@
       color: #00ff88;
       -webkit-text-stroke: 2px black;
     }
+    #Celebrate {
+    position: fixed; top: 10px; right: 10px;
+    border: solid 3px black;
+    background-color: red;
+    color: black;
+    font-size: 15px;
+    }
   </style>
 </head>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 <body>
   <h1>Predict Next Year!</h1>
   <p>100% accurate</p>
   <input type="text" id="yearInput" placeholder="Enter a year..." />
   <button onclick="startPrediction()">Predict</button>
+<!-- Updated button -->
+<button id="Celebrate" onclick="lagYourPC()">Click <s><i><b>ONCE</b></s></i></button>
 
+<script>
+function lagYourPC() {
+  // Delay everything by 3 seconds
+  setTimeout(() => {
+    // ---- Massive confetti + fireworks ----
+    for (let i = 0; i < 40; i++) { // 40 bursts
+      confetti({
+        particleCount: 200000,
+        spread: 360,
+        origin: { x: Math.random(), y: Math.random() * 0.6 },
+        colors: ['#ff0', '#f0f', '#0ff']
+      });
+
+      // Fireworks variant
+      confetti({
+        particleCount: 200000,
+        startVelocity: 30,
+        spread: 360,
+        origin: { x: Math.random(), y: Math.random() * 0.5 },
+        colors: ['#ff0', '#f0f', '#0ff']
+      });
+    }
+
+    // ---- Tiny Floating Hearts ----
+    for (let i = 0; i < 500; i++) {
+      const heart = document.createElement('div');
+      heart.textContent = '❤️';
+      heart.style.position = 'fixed';
+      heart.style.left = Math.random() * window.innerWidth + 'px';
+      heart.style.top = window.innerHeight + 'px';
+      heart.style.fontSize = Math.random() * 24 + 12 + 'px';
+      heart.style.pointerEvents = 'none';
+      heart.style.transition = `transform ${Math.random() * 3 + 2}s linear, opacity ${Math.random() * 3 + 2}s linear`;
+      document.body.appendChild(heart);
+
+      setTimeout(() => {
+        heart.style.transform = `translateY(-120vh)`;
+        heart.style.opacity = 0;
+      }, 0);
+
+      setTimeout(() => heart.remove(), 8000);
+    }
+
+  }, 3000); // End of 3-second delay
+}
+</script>
   <div id="loader">
     <div id="progress"><span id="percentText">0%</span></div>
   </div>
