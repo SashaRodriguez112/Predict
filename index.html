@@ -51,7 +51,7 @@
       font-size: 1em;
       background: #00ffff;
       color: #000;
-      border: none;
+      border: solid 1px black;
       border-radius: 5px;
       cursor: pointer;
       max-width: 90vw;
@@ -123,6 +123,11 @@
   <p>100% accurate</p>
   <input type="text" id="yearInput" placeholder="Enter a year..." />
   <button onclick="startPrediction()">Predict</button>
+  document.getElementById("yearInput").addEventListener("keydown", function(event) {
+  if (event.key === "Enter") {
+    startPrediction();
+  }
+});
 <!-- Updated button -->
 <button id="Celebrate" onclick="lagYourPC()">Click <s><i><b>ONCE</b></s></i></button>
 
