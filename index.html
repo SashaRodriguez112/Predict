@@ -123,11 +123,13 @@
   <p>100% accurate</p>
   <input type="text" id="yearInput" placeholder="Enter a year..." />
   <button onclick="startPrediction()">Predict</button>
-  document.getElementById("yearInput").addEventListener("keydown", function(event) {
+  <script>
+    document.getElementById("yearInput").addEventListener("keydown", function(event) {
   if (event.key === "Enter") {
     startPrediction();
   }
 });
+  </script>
 <!-- Updated button -->
 <button id="Celebrate" onclick="lagYourPC()">Click <s><i><b>ONCE</b></s></i></button>
 
