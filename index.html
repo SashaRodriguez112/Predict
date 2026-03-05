@@ -149,15 +149,15 @@ function lagYourPC() {
       // Fireworks variant
       confetti({
         particleCount: 200000,
-        startVelocity: 30,
-        spread: 360,
+        startVelocity: 50,
+        spread: 270,
         origin: { x: Math.random(), y: Math.random() * 0.5 },
         colors: ['#ff0', '#f0f', '#0ff']
       });
     }
 
     // ---- Tiny Floating Hearts ----
-    for (let i = 0; i < 500; i++) {
+    for (let i = 0; i < 250; i++) {
       const heart = document.createElement('div');
       heart.textContent = '❤️';
       heart.style.position = 'fixed';
@@ -176,7 +176,7 @@ function lagYourPC() {
       setTimeout(() => heart.remove(), 8000);
     }
 
-  }, 3000); // End of 3-second delay
+  }, 2000); // End of 3-second delay
 }
 </script>
   <div id="loader">
